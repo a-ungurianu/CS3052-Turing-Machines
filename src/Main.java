@@ -83,20 +83,22 @@ public class Main {
             else {
                 throw new IOException("Unknown state: " + descriptionScanner.next());
             }
+
             String currentSymbol = descriptionScanner.next(alphabetRegex);
-            String nextStateSym = descriptionScanner.next(stateRegex);
+
+            String nextStateSym;
+            if(descriptionScanner.hasNext(stateRegex)) {
+                nextStateSym  = descriptionScanner.next(stateRegex);
+            }
+            else {
+                throw new IOException("Unknown state: " + descriptionScanner.next());
+            }
             String rewriteSymbol = descriptionScanner.next(alphabetRegex);
             String moveSym = descriptionScanner.next(moveRegex);
 
             State currentState = states.get(currentStateSym);
-            if (currentState == null) {
-                throw new IOException("Unknown state: " + currentStateSym);
-            }
 
             State nextState = states.get(nextStateSym);
-            if (nextState == null) {
-                throw new IOException("Unknown state: " + nextStateSym);
-            }
 
             Move move = Move.fromSymbol(moveSym);
 
