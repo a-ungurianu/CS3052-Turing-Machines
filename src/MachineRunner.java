@@ -7,10 +7,16 @@ public class MachineRunner {
     private int position;
     private int transitionCount = 0;
     private State state;
+    private final boolean printTransitions;
     Map<Integer, Character> tape = new HashMap<>();
 
     MachineRunner(State startState, String tapeInput) {
+        this(startState, tapeInput, false);
+    }
+
+    MachineRunner(State startState, String tapeInput, boolean printTransitions) {
         this.state = startState;
+        this.printTransitions = printTransitions;
         this.position = 0;
 
         for(int i = 0; i < tapeInput.length(); ++i) {
@@ -53,7 +59,8 @@ public class MachineRunner {
             if(!step()) {
                 return false;
             }
-//            printState();
+            if(printTransitions)
+                printState();
         }
         return true;
     }
@@ -65,6 +72,9 @@ public class MachineRunner {
 
     private void printState() {
         System.out.println("State: " + state.getName());
+        if(state.getName().equals("start")) {
+            System.out.println("Trans count:" + getTransitionCount());
+        }
 
         LinkedList<Integer> positions = new LinkedList<>(tape.keySet());
         positions.sort(Integer::compareTo);
