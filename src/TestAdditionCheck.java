@@ -26,7 +26,7 @@ public class TestAdditionCheck {
             long totalTransitions = 0;
             for(int trial = 0; trial < 100; ++trial) {
                 MachineRunner machineRunner = new MachineRunner(startState, generateAdditionInput(w));
-                if(!machineRunner.run()) {
+                if(machineRunner.run() == null) {
                     throw new Exception("Test input failed");
                 }
                 totalTransitions += machineRunner.getTransitionCount();

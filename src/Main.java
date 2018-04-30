@@ -1,10 +1,3 @@
-import info.leadinglight.jdot.Edge;
-import info.leadinglight.jdot.Graph;
-import info.leadinglight.jdot.Node;
-import info.leadinglight.jdot.enums.Color;
-import info.leadinglight.jdot.enums.Rankdir;
-import info.leadinglight.jdot.enums.Style;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,17 +14,6 @@ public class Main {
         System.out.println("runtm <desription-file> <input>");
     }
 
-
-    private static Node createStateNode(String name, boolean start, boolean accepting) {
-        Node node = new Node(name);
-        if(start) {
-            node.setPeripheries(2);
-        }
-        if(accepting) {
-            node.setStyle(Style.Node.filled).setFillColor(Color.SVG.lightgray);
-        }
-        return node;
-    }
 
     public static State readMachine(String path) throws IOException {
 
@@ -106,14 +88,6 @@ public class Main {
         }
 
         return startState;
-    }
-
-    private static Edge createStateTransitionEdge(State currentState, State nextState, Character on, Character rewrite, String move) {
-        Edge edge = new Edge();
-        edge.addNode(currentState.getName());
-        edge.addNode(nextState.getName());
-        edge.setLabel("" + on +"->" + rewrite +"\\n" + move);
-        return edge;
     }
 
     public static void main(String[] args) throws IOException {

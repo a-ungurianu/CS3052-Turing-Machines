@@ -1,28 +1,27 @@
 states 6
 
-q1
-q2
-q3
-q4
-q5
+check_at_least_1
+first_odd
+even
+odd
+go_back
 
 accept +
 
-alphabet 2 0 x
+alphabet 2 1 #
 
-q1 0 q2 _ R
+check_at_least_1 1 first_odd _ R
 
-q2 x q2 x R
-q2 0 q3 x R
-q2 _ accept _ S
+first_odd # first_odd # R
+first_odd 1 even # R
+first_odd _ accept _ S
 
-q3 0 q4 x R
-q3 x q3 x R
-q3 _ q5 _ L
+even 1 odd # R
+even # even # R
+even _ go_back _ L
+odd 1 even 1 R
+odd # odd # R
 
-q4 0 q3 x R
-q4 x q4 x R
-
-q5 0 q5 0 L
-q5 x q5 x L
-q5 _ q2 _ R
+go_back 1 go_back 1 L
+go_back # go_back # L
+go_back _ first_odd _ R
