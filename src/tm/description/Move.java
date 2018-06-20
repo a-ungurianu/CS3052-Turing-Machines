@@ -1,3 +1,5 @@
+package tm.description;
+
 public enum Move {
     Left, Right, Stay;
 

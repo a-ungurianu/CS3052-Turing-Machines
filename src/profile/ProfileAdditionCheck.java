@@ -1,7 +1,12 @@
-import java.io.IOException;
+package profile;
+
+import tm.Utils;
+import tm.description.State;
+import tm.runner.MachineRunner;
+
 import java.util.Random;
 
-public class TestAdditionCheck {
+public class ProfileAdditionCheck {
     final static Random RANDOM = new Random();
 
     static String reverse(String s) {
@@ -20,7 +25,7 @@ public class TestAdditionCheck {
     }
 
     public static void main(String[] args) throws Exception {
-        State startState = Main.readMachine("check_add.tm");
+        State startState = Utils.readMachine("check_add.tm");
 
         for(int w = 1; w < 1000; ++w) {
             long totalTransitions = 0;

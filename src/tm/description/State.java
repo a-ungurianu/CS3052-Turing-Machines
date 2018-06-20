@@ -1,3 +1,5 @@
+package tm.description;
+
 import java.util.*;
 
 public class State {
@@ -6,7 +8,7 @@ public class State {
     private final boolean accepting;
     private final Map<Character, List<Transition>> transitions = new HashMap<>();
 
-    State(String name, boolean accepting) {
+    public State(String name, boolean accepting) {
         this.name = name;
         this.accepting = accepting;
     }

@@ -1,7 +1,13 @@
+package profile;
+
+import tm.Utils;
+import tm.description.State;
+import tm.runner.MachineRunner;
+
 import java.io.IOException;
 import java.util.Random;
 
-public class TestPalindrome {
+public class ProfilePalindrome {
     final static Random RANDOM = new Random();
 
     static String generatePalindrome(int length) {
@@ -23,7 +29,7 @@ public class TestPalindrome {
     }
 
     public static void main(String[] args) throws IOException {
-        State startState = Main.readMachine("palindrome.tm");
+        State startState = Utils.readMachine("palindrome.tm");
 
         for(int length = 1; length < 1000; ++length) {
             long totalTransitions = 0;

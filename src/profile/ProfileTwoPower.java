@@ -1,7 +1,12 @@
-import java.io.IOException;
+package profile;
+
+import tm.Utils;
+import tm.description.State;
+import tm.runner.MachineRunner;
+
 import java.util.Random;
 
-public class TestTwoPower {
+public class ProfileTwoPower {
     final static Random RANDOM = new Random();
 
     static boolean isPow2(int number) {
@@ -18,7 +23,7 @@ public class TestTwoPower {
     }
 
     public static void main(String[] args) throws Exception {
-        State startState = Main.readMachine("power_of_two.tm");
+        State startState = Utils.readMachine("power_of_two.tm");
 
         for(int length = 1; length < 1024; ++length) {
             long totalTransitions = 0;

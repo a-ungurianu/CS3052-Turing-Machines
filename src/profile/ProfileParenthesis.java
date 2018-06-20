@@ -1,7 +1,12 @@
-import java.io.IOException;
+package profile;
+
+import tm.Utils;
+import tm.description.State;
+import tm.runner.MachineRunner;
+
 import java.util.Random;
 
-public class TestParenthesis {
+public class ProfileParenthesis {
     final static Random RANDOM = new Random();
 
     static String generateParenthesis(int halfLength) {
@@ -20,7 +25,7 @@ public class TestParenthesis {
     }
 
     public static void main(String[] args) throws Exception {
-        State startState = Main.readMachine("parenthesis.tm");
+        State startState = Utils.readMachine("parenthesis.tm");
 
         for(int length = 1; length < 500; ++length) {
             long totalTransitions = 0;
